@@ -14,4 +14,4 @@ def clean_precio(self):
 		elif precio >= 19999.00:
 			raise forms.validationError("El precio maximo es de $19999.00")
 		else:
-			raise precio
+			return
