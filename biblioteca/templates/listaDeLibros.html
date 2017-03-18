@@ -4,12 +4,20 @@
   <h1>{{mensaje}}</h1>
   <di class="">
 
+{%for Libro in consulta%}
 
-    <h1>{{consulta}}</h1>
-    <h1>{{libro.nombre}}</h1>
-    <h1>{{libro.precio}}</h1>
-    <h1>{{libro.autor}}</h1>
-    <h1>{{libro.ISBN}}</h1>
-    <h1>{{libro.editorial}}</h1>
+    <tr>
+
+        <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.id}}</a></th>
+        <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.nombre}}</a></th>
+        <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.autor}}</a></th>
+        <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.editorial}}</a></th>
+        <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.precio}}</a></th>
+        <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.ISBN}}</a></th>
+    </tr>
+
+    {%empty%}
+  <li>No hay productos en existencia!</li>
+{%endfor%}
   </di>
 {%endblock%}

@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 
 from django.contrib import admin
-
+from libros.views import LibroDetailView, LibrosListView, LibrosUpdateView
 
 from libros import views
 
@@ -24,6 +24,16 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
     url(r'^libros/$', views.lista_libros, name='lista_libros'),
+
+    url(r'^libros/lista$', LibrosListView.as_view(), name='lista_view'),
+    url(r'^libros/(?P<pk>\d+)/$', LibroDetailView.as_view(), name='detalle_view'),
+    url(r'^detalle/(?P<object_id>\d+)/actualizar/$', views.actualizar, name='actualizar'),
+
+    url(r'^Libro/(?P<pk>\d+)/actualizar/$', LibrosUpdateView.as_view(), name='update_view'),
+
+
     url(r'^detalle/(?P<object_id>\d+)/$', views.detalle, name='detalle_libro'),
     url(r'^agregar/$', views.agregar_libro, name='agregar_libro'),
+
+
 ]

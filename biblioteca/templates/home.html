@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Examen unidad 1</title>
-  </head>
-  <body>
-    <h1>{{mensaje}}</h1>
+{% extends "base.html" %}
+{%block content%}
 
-  </body>
-</html>
+<h1>Hello, Botstrap!</h1>
+<p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+
+{%endblock%}
