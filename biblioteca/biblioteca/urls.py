@@ -13,27 +13,33 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 
 from django.contrib import admin
-from libros.views import LibroDetailView, LibrosListView, LibrosUpdateView
-
-from libros import views
+# from libros.views import LibrosCreateView, LibrosUpdateView, LibrosDetailView, LibrosListView
+# from libros import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.home, name='home'),
-    url(r'^libros/$', views.lista_libros, name='lista_libros'),
-
-    url(r'^libros/lista$', LibrosListView.as_view(), name='lista_view'),
-    url(r'^libros/(?P<pk>\d+)/$', LibroDetailView.as_view(), name='detalle_view'),
-    url(r'^detalle/(?P<object_id>\d+)/actualizar/$', views.actualizar, name='actualizar'),
-
-    url(r'^Libro/(?P<pk>\d+)/actualizar/$', LibrosUpdateView.as_view(), name='update_view'),
+    url(r'^libros/', include("libros.urls", namespace='libros')),
 
 
-    url(r'^detalle/(?P<object_id>\d+)/$', views.detalle, name='detalle_libro'),
-    url(r'^agregar/$', views.agregar_libro, name='agregar_libro'),
-
+    # url(r'^$', views.home, name='home'),
+    # url(r'^libros/$', views.lista_libros, name='lista_libros'),
+    #
+    # url(r'^detalle/(?P<object_id>\d+)/actualizar/$', views.actualizar, name='actualizar'),
+    #
+    # url(r'^detalle/(?P<object_id>\d+)/$', views.detalle, name='detalle_libro'),
+    # url(r'^agregar/$', views.agregar_libro, name='agregar_libro'),
+    #
+    # #url de vistas basadas en clases
+    # url(r'^libros/lista$', LibrosListView.as_view(), name='libro_list'),
+    # url(r'^libros/(?P<pk>\d+)/$', LibrosDetailView.as_view(), name='libro_detail'),
+    # url(r'^libros/crear/$', LibrosCreateView.as_view(), name='crear_view'),
+    #
+    # url(r'^libros/(?P<pk>\d+)/actualizar/$', LibrosUpdateView.as_view(), name='update_view'),
+    # url(r'^(?P<slug>[\w-]+)/$', LibrosDetailView.as_view(), name='detalle_slug'),
+    #
+    #
 
 ]

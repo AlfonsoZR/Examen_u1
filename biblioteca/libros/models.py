@@ -3,6 +3,9 @@ from __future__ import unicode_literals
 from django.db import models
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
+
+from django.urls import reverse
+
 # Create your models here.
 class Libro(models.Model):
     nombre  = models.CharField(max_length = 50)
@@ -16,6 +19,11 @@ class Libro(models.Model):
 
     def __unicode__(self):
         return self.nombre
+
+    def get_absolute_url(self):
+        print "URL completo"
+        mirar_nombre = "libros:detalle_slug"
+        return reverse(mirar_nombre, args=[str(self.slug)])
 
 def Libro_pre_save_reciever(sender, instance, *args, **kwargs):
     print sender

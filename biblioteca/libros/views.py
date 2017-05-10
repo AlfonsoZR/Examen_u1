@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import Http404
 from django.shortcuts import get_object_or_404
+
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
 
+from biblioteca.mixinslug import MixinSlug
 
 
 
@@ -93,8 +95,18 @@ def actualizar(request, object_id=None):
 
 
 
-class LibroDetailView(DetailView):
+#examen unidad 3 (vistas basadas en clases)
+class LibrosCreateView(CreateView):
     model = Libro
+#   template_name = "form.html"
+    form_class = LibrosModelForm
+    #success_url = "/producto/crear/"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(LibrosCreateView, self).get_context_data(*args, **kwargs)
+        context["submit_btn"]="Guardar"
+        return context
+
 
 class LibrosUpdateView(UpdateView):
     model = Libro
@@ -106,6 +118,25 @@ class LibrosUpdateView(UpdateView):
         context = super(LibrosUpdateView, self).get_context_data(*args, **kwargs)
         context["submit_btn"]="Editar"
         return context
+
+class LibrosDetailView(DetailView, MixinSlug):
+    model = Libro
+    # def get_object(self, *args, **kwargs):
+    #       print self.kwargs
+    #       slug = self.kwargs.get("slug")
+    #       print slug
+    #       ModelClass = self.model
+    #       if slug is not None:
+    #           try:
+    #               #producto = get_object_or_404(Producto, slug=slug)
+    #               obj = get_object_or_404(ModelClass, slug=slug)
+    #           except:
+    #               #producto = Producto.objects.filter(slug=slug).order_by("-nombre").first()
+    #               obj = ModelClass.objects.filter(slug=slug).order_by("-nombre").first()
+    #       else:
+    #           obj = super(LibrosDetailView, self).get_object(*args, **kwargs)
+    #
+    #       return obj
 
 class LibrosListView(ListView):
     model = Libro
