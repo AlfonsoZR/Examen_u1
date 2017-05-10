@@ -1,13 +1,34 @@
 {%extends 'base.html'%}
 
 {%block content%}
-<h1>Libros</h1>
-<ul>
-  {%for Libro in consulta%}
-    <li>{{Libro.nombre}} - {{Libro.descripcion}} - {{Libro.precio}}</li>
+
+
+<h2 class="sub-header">Lista de Libros</h2>
+          <div class="table-responsive">
+<table class="table table-striped">
+
+      <tbody>
+
+    <ul>
+  {%for Libro in object_list%}
+
+    <tr>
+      <th>{{Libro.id}}</th>
+      <th><a href="/libros/{{Libro.id}}/editar/">{{Libro.nombre}}</a></th>
+      <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.autor}}</a></th>
+      <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.editorial}}</a></th>
+      <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.precio}}</a></th>
+      <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.ISBN}}</a></th>
+
+    </tr>
   {%empty%}
     <li>No hay libros en existencia!</li>
   {%endfor%}
 </ul>
+      </tbody>
+
+</table>
+</div>3
+
 
 {%endblock %}

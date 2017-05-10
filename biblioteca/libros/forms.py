@@ -9,7 +9,7 @@ OPCIONES_TIPO = (
 )
 class LibroAddForm(forms.Form):
 	nombre  = forms.CharField(label="cual es el nombre del libro?", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre de libro'}))
-	autor = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+	autor = forms.CharField(label="cual es el nombre del autor?", widget=forms.TextInput(attrs={'class': 'form-control','placeholder': 'Nombre del autor del libro'}))
 	editorial = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
 	ISBN = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
 	precio = forms.DecimalField()
@@ -40,10 +40,9 @@ class LibrosModelForm(forms.ModelForm):
 			"precio":"Precio del libro"
         }
         widgets = {
-            "nombre": forms.TextInput(attrs={'class': 'form-control',
-                                            'placeholder': 'Ponga el nombre'}),
-            "autor": forms.Textarea(attrs={'class': 'form-control'}),
-            "editorial": forms.Textarea(attrs={'class': 'form-control'}),
+            "nombre": forms.TextInput(attrs={'class': 'form-control','placeholder': 'Ponga el nombre'}),
+            "autor": forms.TextInput(attrs={'class': 'form-control','placeholder':'Ponga el nombre del autor del libor'}),
+            "editorial": forms.TextInput(attrs={'class': 'form-control'}),
 			"precio": forms.NumberInput(attrs={'class': 'form-control'}),
 
         }
