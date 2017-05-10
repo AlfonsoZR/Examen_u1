@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from biblioteca.mixinslug import MixinSlug
 
 
-
+from django.db.models import Q
 
 from .models import Libro
 from .forms import LibroAddForm, LibrosModelForm
@@ -143,4 +143,13 @@ class LibrosListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         qs = super(LibrosListView, self).get_queryset(**kwargs)
+
+        busca = self.request.GET.get("q")
+        if busca:
+            qset = (
+                Q(nombre__icontains=busca) |
+                Q(autor__icontains=busca)
+            )
+            qs = Libro.objects.filter(qset).distinct()
+
         return qs

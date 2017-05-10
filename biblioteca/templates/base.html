@@ -53,7 +53,7 @@
             <li><a href="#">Help</a></li>
           </ul>
           <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
+            <input type="text" class="form-control" placeholder="Search..." name="q" value="{{busca|escape}}">
           </form>
         </div>
       </div>
@@ -82,21 +82,8 @@
           <h1 class="page-header">Dashboard biblioteca</h1>
 
 
-      
 
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>id</th>
-                  <th>Nombre</th>
-                  <th>autor</th>
-                  <th>editorial</th>
-                  <th>precio</th>
-                  <th>ISBN</th>
-                </tr>
-              </thead>
-              <tbody>
+
 
             {%block content%}
 

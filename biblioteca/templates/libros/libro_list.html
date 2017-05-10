@@ -9,16 +9,32 @@
 
       <tbody>
 
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>autor</th>
+                <th>editorial</th>
+                <th>precio</th>
+                <th>ISBN</th>
+              </tr>
+            </thead>
+            <tbody>
+
+
+
     <ul>
   {%for Libro in object_list%}
 
     <tr>
       <th>{{Libro.id}}</th>
       <th><a href="/libros/{{Libro.id}}/editar/">{{Libro.nombre}}</a></th>
-      <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.autor}}</a></th>
-      <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.editorial}}</a></th>
-      <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.precio}}</a></th>
-      <th><a href="/detalle/{{Libro.id}}/actualizar">{{Libro.ISBN}}</a></th>
+      <th><a href="/libros/{{Libro.id}}/actualizar">{{Libro.autor}}</a></th>
+      <th><a href="/libros/{{Libro.id}}/actualizar">{{Libro.editorial}}</a></th>
+      <th><a href="/libros/{{Libro.id}}/actualizar">{{Libro.precio}}</a></th>
+      <th><a href="/libros/{{Libro.id}}/actualizar">{{Libro.ISBN}}</a></th>
 
     </tr>
   {%empty%}
